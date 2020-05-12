@@ -1,0 +1,5 @@
+beautifulsoup4==4.7.1
+PyMySQL==0.9.3
+requests==2.21.0
+requests-oauthlib==1.2.0
+selenium==3.141.0
