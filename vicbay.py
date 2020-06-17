@@ -10,7 +10,6 @@ import re
 import mysql.connector
 import datetime
 import time
-
 i = 0
 
 try:
@@ -103,14 +102,26 @@ try:
     #
     #
     #
+    creds = []
+
+    f = open("creds.txt", "r")
+
+    for x in f:
+        creds.append(x)
+
+    f.close()
+    #
+    #
+    #
+
 
     sql = 'insert into surf_data_testing (dateid, curHeight,curTide,curWind,curWindDir,furWave1,furWave2,furWave3,furWave4,furWave5,furWind1,furWind2,furWind3,furWind4,furWind5) VALUES ("%s",%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);'% (dateTime, wave_height,tide,wind,wind_dir,future_wave[0],future_wave[1],future_wave[2],future_wave[3],future_wave[4],future_wind[0],future_wind[1],future_wind[2],future_wind[3],future_wind[4])
 
     db_connection = mysql.connector.connect(
-        host="aws-surf-data.cwc6jybwwwrj.us-east-1.rds.amazonaws.com",
-        user="admin",
-        passwd="xxmaster",
-        database="surf_data"
+        host=creds[0],
+        user=creds[1],
+        passwd=creds[2],
+        database=creds[3]
     )
 
     # prepare a cursor object using cursor() method
